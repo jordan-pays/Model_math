@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 """
@@ -44,31 +43,32 @@ def etape1():
 etape1()
 
 def etape2():
-     bleu = np.array([0, 0, 255], dtype = np.uint8)
-     jaune = np.array([255, 255, 0], dtype = np.uint8)
-     rouge = np.array([255, 0, 0], dtype = np.uint8)
-     blanc = np.array([0, 0, 0], dtype = np.uint8)
-     vert = np.array([0, 255, 0], dtype = np.uint8)
-     hauteur =500 
-     largeur = 1000
-     
-     triangles = np.zeros((hauteur, largeur, 3), dtype = np.uint8)
-     
-     I, J = np.meshgrid(\
-                        np.arange(hauteur, dtype=np.int64),\
-                        np.arange(largeur, dtype = np.int64),\
-                        indexing = 'ij')
-     
-    triangles[ (np.cos(largeur)*I <= J) &  (np.cos(largeur)*I <= (largeur - J)) ] = bleu
-    triangles[ (np.cos(9)*I <= J) & (np.cos(9)*I > (largeur - J)) ] = jaune
-    triangles[ (np.cos(9)*I >= J) &  (np.cos(9)*I > (largeur - J)) ] = rouge
-    triangles[ (np.cos(9)*I >= J) &  (np.cos(9)*I <= (largeur - J)) ] = blanc
-    triangles[ (np.cos(9)*I >= J) &  (np.cos(9)*I <= (largeur - J)) ] = vert
-    #
-    # Voilà le résultat :
+    bleu = np.array([0, 0, 255], dtype = np.uint8)
+    jaune = np.array([255, 255, 0], dtype = np.uint8)
+    rouge = np.array([255, 0, 0], dtype = np.uint8)
+    blanc = np.array([0, 0, 0], dtype = np.uint8)
+    vert = np.array([0, 255, 0], dtype = np.uint8)
+    hauteur =500 
+    largeur = 1000
+             
+    triangles = np.zeros((hauteur, largeur, 3), dtype = np.uint8)
+             
+    I, J = np.meshgrid(\
+                       np.arange(hauteur, dtype=np.int64),\
+                       np.arange(largeur, dtype = np.int64),\
+                       indexing = 'ij')
+             
+#    triangles[ ((largeur-I*3) <= J) &  (I <=(largeur-J)) ] = bleu
+#    triangles[ ((largeur/hauteur)*I <= J) & (I > (largeur - J)) ] = jaune
+    triangles[ ((largeur-I*2.5) <= J) &  ((largeur-I) <=(largeur-J))] = rouge
+    
+#    triangles[ ((largeur/hauteur)*I >= J) &  (I <= (largeur - J)) ] = blanc
+#    triangles[ ((largeur/hauteur)*I >= J) &  (I <= (largeur - J)) ] = vert
+            #
+            # Voilà le résultat :
     plt.imshow(triangles)
     plt.show() # inutile en interactif
-    #
-    # Ça mérite une sauvegarde :
+            #
+            # Ça mérite une sauvegarde :
     plt.imsave('Seychelles.png', triangles)
 etape2()

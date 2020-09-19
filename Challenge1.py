@@ -4,11 +4,27 @@
 Ceci est un script temporaire.
 """
 import matplotlib.pyplot as plt
-knight = plt.imread('/home/ann2/paysj/Model_math/dark-knight.png', 'PNG')
+knight = plt.imread('./dark-knight.png', 'PNG')
 import numpy as np
-knight2 = np.concatenate((knight,knight))
-plt.imshow(knight2)
-knight3= np.concatenate((knight,knight),axis=1)
-plt.imshow(knight3)
-knight4=np.concatenate((knight3,knight3))
-plt.imshow(knight4)
+
+def etape1(): 
+    knight1 = np.concatenate((knight,knight))
+    plt.imshow(knight1)
+    plt.show()
+    plt.imsave('KnihtVerticale.png', knight1)
+etape1()
+
+def etape2() :
+    knight1= np.concatenate((knight,knight),axis=1)
+    plt.imshow(knight1)
+    plt.show()
+    plt.imsave('KnightHorizontale.png', knight1)
+etape2()
+
+def etape3():
+    knight1= np.concatenate((knight,knight),axis=1)
+    knight2=np.concatenate((knight1,knight1))
+    plt.imshow(knight2)
+    plt.show()
+    plt.imsave('4Kngiht.png', knight2)
+etape3()
